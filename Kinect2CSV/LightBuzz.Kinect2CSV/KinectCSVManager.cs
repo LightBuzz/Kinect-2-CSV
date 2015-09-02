@@ -38,7 +38,7 @@ namespace LightBuzz.Kinect2CSV
             using (StreamWriter writer = new StreamWriter(path))
             {
                 StringBuilder line = new StringBuilder();
-                
+
                 if (!_hasEnumeratedJoints)
                 {
                     foreach (var joint in body.Joints.Values)
@@ -70,6 +70,7 @@ namespace LightBuzz.Kinect2CSV
         public void Stop()
         {
             IsRecording = false;
+            _hasEnumeratedJoints = false;
 
             Result = DateTime.Now.ToString("yyy_MM_dd_HH_mm_ss") + ".csv";
 
